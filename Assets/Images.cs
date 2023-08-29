@@ -39,6 +39,8 @@ public class Images : MonoBehaviour
             textureCombineObj.GetComponent<TextureCombine>().PIXEL_HEIGHT = height;
             Debug.Log("Texture Width: " + width);
             Debug.Log("Texture Height: " + height);
+
+            textureCombineObj.GetComponent<TextureCombine>().ChangeRatio();
         }
     }
 

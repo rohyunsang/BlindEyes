@@ -13,13 +13,20 @@ public class TextureCombine : MonoBehaviour
 
     public float PIXEL_WIDTH = 2136f;
     public float PIXEL_HEIGHT = 3216f;
-    private const float PIXEL_FACEIMAGE_WIDTH = 715f;
+    public float PIXEL_FACEIMAGE_WIDTH = 715f;
     private const float PIXEL_FACEIMAGE_HEIGHT = 1080f;
 
     public Texture2D currentTexture;
     public string currentImageName;
 
     public GameObject PortraitSpawn;
+
+    public void ChangeRatio()
+    {
+        PIXEL_FACEIMAGE_WIDTH = (PIXEL_FACEIMAGE_HEIGHT * PIXEL_WIDTH) / PIXEL_HEIGHT;
+        RectTransform rectTransform = faceImage.GetComponent<RectTransform>();
+        rectTransform.sizeDelta = new Vector2(PIXEL_FACEIMAGE_WIDTH, rectTransform.sizeDelta.y);
+    }
 
     public void DeleteRect()
     {
@@ -67,6 +74,8 @@ public class TextureCombine : MonoBehaviour
 
     public void CalculateRectangleCoordinates()
     {
+        ChangeRatio();
+
         points = new float[4];
         List<GameObject> blindRects = new List<GameObject>();
         foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
