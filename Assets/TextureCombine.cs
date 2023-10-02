@@ -74,7 +74,7 @@ public class TextureCombine : MonoBehaviour
 
     public void CalculateRectangleCoordinates()
     {
-        ChangeRatio();
+        
 
         points = new float[4];
         List<GameObject> blindRects = new List<GameObject>();
